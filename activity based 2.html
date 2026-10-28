@@ -1,0 +1,611 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Fest 2026</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6fb;
+            color: #222;
+            line-height: 1.6;
+        }
+        header {
+            background: #17133b;
+            color: white;
+            padding: 15px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        header h2 {
+            color: #ffcf5c;
+        }
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #ffcf5c;
+        }
+        .banner {
+            min-height: 400px;
+            padding: 70px 20px;
+            text-align: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background:
+                linear-gradient(rgba(20, 15, 65, 0.78),
+                rgba(30, 15, 70, 0.78)),
+                url("https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=1600&q=80")
+                center/cover;
+        }
+
+        .banner h1 {
+            font-size: clamp(2.2rem, 6vw, 4rem);
+            color: #ffcf5c;
+            margin-bottom: 10px;
+        }
+
+        .banner p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ffcf5c;
+            color: #17133b;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #ffb52e;
+        }
+        section {
+            padding: 50px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #17133b;
+            margin-bottom: 30px;
+        }
+
+        .intro {
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+        }
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 22px;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 14px #00000012;
+            transition: transform 0.3s;
+        }
+
+        .event-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .event-card img {
+            width: 100%;
+            height: 175px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #eeeaff;
+            color: #4837a5;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .card-content h3 {
+            color: #17133b;
+            margin-bottom: 8px;
+        }
+
+        .card-content p {
+            margin-bottom: 8px;
+        }
+        .schedule-wrap {
+            overflow-x: auto;
+            background: white;
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 550px;
+        }
+
+        th, td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #17133b;
+            color: white;
+        }
+
+        tr:hover {
+            background: #f0efff;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px #00000010;
+        }
+
+        .info-card h3 {
+            color: #4837a5;
+            margin-bottom: 12px;
+        }
+
+        .info-card ul {
+            padding-left: 20px;
+        }
+        #register {
+            background: #eae8ff;
+        }
+
+        .form-box {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px #00000012;
+        }
+
+        .form-box label {
+            display: block;
+            margin: 12px 0 5px;
+            font-weight: bold;
+        }
+
+        .form-box input,
+        .form-box select,
+        .form-box textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        .form-box button {
+            width: 100%;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        #message {
+            margin-top: 15px;
+            color: #20733b;
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            background: #17133b;
+            color: white;
+            padding: 25px 15px;
+        }
+
+        footer a {
+            color: #ffcf5c;
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                justify-content: center;
+                text-align: center;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .banner {
+                min-height: 330px;
+                padding: 45px 15px;
+            }
+
+            section {
+                padding: 35px 5%;
+            }
+
+            .form-box {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2>FEST 2026</h2>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#events">Events</a>
+            <a href="#workshops">Workshops</a>
+            <a href="#schedule">Schedule</a>
+            <a href="#coordinators">Coordinators</a>
+            <a href="#register">Register</a>
+        </nav>
+    </header>
+    <div class="banner" id="home">
+        <h1>IGNITE FEST 2026</h1>
+        <p>Celebrate Talent, Technology, Creativity and Culture!</p>
+        <p>📅 20–21 November 2026 | 📍 College Campus</p>
+        <a href="#register" class="btn">Register Now</a>
+    </div>
+    <section>
+        <h2 class="section-title">Welcome to IGNITE FEST</h2>
+        <p class="intro">
+            Ignite Fest is our college's annual celebration of innovation,
+            creativity and teamwork. Participate in exciting technical events,
+            cultural competitions and hands-on workshops, and create
+            unforgettable memories with your friends.
+        </p>
+    </section>
+
+    <section id="events">
+        <h2 class="section-title">💻 Technical Events</h2>
+
+        <div class="event-grid">
+            <div class="event-card">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=700&q=80"
+                     alt="Electronic components">
+                <div class="card-content">
+                    <span class="tag">Technical</span>
+                    <h3>Code Battle</h3>
+                    <p>Test your programming and problem-solving skills.</p>
+                    <p><b>Time:</b> 10:00 AM</p>
+                    <p><b>Venue:</b> Computer Lab</p>
+                    <a href="#register" class="btn">Join Event</a>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=700&q=80"
+                     alt="Technology and robotics">
+                <div class="card-content">
+                    <span class="tag">Technical</span>
+                    <h3>Robo Race</h3>
+                    <p>Showcase your robotics and engineering talent.</p>
+                    <p><b>Time:</b> 11:30 AM</p>
+                    <p><b>Venue:</b> Innovation Lab</p>
+                    <a href="#register" class="btn">Join Event</a>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80"
+                     alt="Laptop and digital workspace">
+                <div class="card-content">
+                    <span class="tag">Technical</span>
+                    <h3>Project Expo</h3>
+                    <p>Present your creative ideas and working projects.</p>
+                    <p><b>Time:</b> 1:00 PM</p>
+                    <p><b>Venue:</b> Seminar Hall</p>
+                    <a href="#register" class="btn">Join Event</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="cultural">
+        <h2 class="section-title">🎭 Cultural Competitions</h2>
+
+        <div class="event-grid">
+            <div class="event-card">
+                <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=700&q=80"
+                     alt="Live music performance">
+                <div class="card-content">
+                    <span class="tag">Cultural</span>
+                    <h3>Music Mania</h3>
+                    <p>Sing your favourite songs and entertain the audience.</p>
+                    <p><b>Time:</b> 2:00 PM</p>
+                    <p><b>Venue:</b> Main Stage</p>
+                    <a href="#register" class="btn">Join Event</a>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <img src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&w=700&q=80"
+                     alt="Festival celebration">
+                <div class="card-content">
+                    <span class="tag">Cultural</span>
+                    <h3>Dance Battle</h3>
+                    <p>Show your energy through solo or group dance.</p>
+                    <p><b>Time:</b> 3:00 PM</p>
+                    <p><b>Venue:</b> Main Stage</p>
+                    <a href="#register" class="btn">Join Event</a>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=700&q=80"
+                     alt="Art and painting">
+                <div class="card-content">
+                    <span class="tag">Cultural</span>
+                    <h3>Art & Creativity</h3>
+                    <p>Express your imagination through art and design.</p>
+                    <p><b>Time:</b> 10:30 AM</p>
+                    <p><b>Venue:</b> Drawing Hall</p>
+                    <a href="#register" class="btn">Join Event</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="workshops">
+        <h2 class="section-title">🛠️ Workshops</h2>
+
+        <div class="event-grid">
+            <div class="event-card">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80"
+                     alt="Computer workshop">
+                <div class="card-content">
+                    <span class="tag">Workshop</span>
+                    <h3>AI & Machine Learning</h3>
+                    <p>Explore AI concepts and practical applications.</p>
+                    <p><b>Time:</b> 9:30 AM</p>
+                    <p><b>Coordinator:</b> Faculty Team</p>
+                    <a href="#register" class="btn">Join Workshop</a>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=700&q=80"
+                     alt="Students collaborating">
+                <div class="card-content">
+                    <span class="tag">Workshop</span>
+                    <h3>Web Development</h3>
+                    <p>Learn the basics of HTML, CSS and website design.</p>
+                    <p><b>Time:</b> 12:00 PM</p>
+                    <p><b>Coordinator:</b> Technical Team</p>
+                    <a href="#register" class="btn">Join Workshop</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="schedule">
+        <h2 class="section-title">📅 Festival Schedule</h2>
+
+        <div class="schedule-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Event</th>
+                        <th>Category</th>
+                        <th>Venue</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>9:00 AM</td>
+                        <td>Opening Ceremony</td>
+                        <td>General</td>
+                        <td>Main Stage</td>
+                    </tr>
+                    <tr>
+                        <td>10:00 AM</td>
+                        <td>Code Battle</td>
+                        <td>Technical</td>
+                        <td>Computer Lab</td>
+                    </tr>
+                    <tr>
+                        <td>11:30 AM</td>
+                        <td>Robo Race</td>
+                        <td>Technical</td>
+                        <td>Innovation Lab</td>
+                    </tr>
+                    <tr>
+                        <td>12:00 PM</td>
+                        <td>Web Development</td>
+                        <td>Workshop</td>
+                        <td>Seminar Hall</td>
+                    </tr>
+                    <tr>
+                        <td>2:00 PM</td>
+                        <td>Music Mania</td>
+                        <td>Cultural</td>
+                        <td>Main Stage</td>
+                    </tr>
+                    <tr>
+                        <td>3:00 PM</td>
+                        <td>Dance Battle</td>
+                        <td>Cultural</td>
+                        <td>Main Stage</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section id="coordinators">
+        <h2 class="section-title">👥 Event Coordinators</h2>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>Technical Events</h3>
+                <p><b>Name:</b> Rahul Kumar</p>
+                <p><b>Role:</b> Technical Coordinator</p>
+                <p><b>Email:</b> tech@example.com</p>
+            </div>
+
+            <div class="info-card">
+                <h3>Cultural Events</h3>
+                <p><b>Name:</b> Priya Sharma</p>
+                <p><b>Role:</b> Cultural Coordinator</p>
+                <p><b>Email:</b> culture@example.com</p>
+            </div>
+
+            <div class="info-card">
+                <h3>Workshops</h3>
+                <p><b>Name:</b> Arjun Reddy</p>
+                <p><b>Role:</b> Workshop Coordinator</p>
+                <p><b>Email:</b> workshops@example.com</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rules -->
+    <section id="rules">
+        <h2 class="section-title">📌 Festival Rules</h2>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>General Rules</h3>
+                <ul>
+                    <li>Carry your college ID card.</li>
+                    <li>Register before the deadline.</li>
+                    <li>Maintain discipline on campus.</li>
+                    <li>Follow the instructions of coordinators.</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3>Competition Rules</h3>
+                <ul>
+                    <li>Participate according to event guidelines.</li>
+                    <li>Use only permitted equipment.</li>
+                    <li>Respect other participants.</li>
+                    <li>The judges' decisions are final.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section id="register">
+        <h2 class="section-title">📝 Event Registration</h2>
+
+        <div class="form-box">
+            <form id="registrationForm">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name"
+                       placeholder="Enter your name" required>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email"
+                       placeholder="Enter your email" required>
+
+                <label for="college">College Name</label>
+                <input type="text" id="college" name="college"
+                       placeholder="Enter your college" required>
+
+                <label for="department">Department</label>
+                <select id="department" name="department" required>
+                    <option value="">Select Department</option>
+                    <option>CSE</option>
+                    <option>IT</option>
+                    <option>ECE</option>
+                    <option>EEE</option>
+                    <option>Mechanical</option>
+                    <option>Civil</option>
+                    <option>Other</option>
+                </select>
+
+                <label for="event">Choose an Event</label>
+                <select id="event" name="event" required>
+                    <option value="">Select Event</option>
+                    <option>Code Battle</option>
+                    <option>Robo Race</option>
+                    <option>Project Expo</option>
+                    <option>Music Mania</option>
+                    <option>Dance Battle</option>
+                    <option>Art & Creativity</option>
+                    <option>AI & Machine Learning Workshop</option>
+                    <option>Web Development Workshop</option>
+                </select>
+
+                <label for="messageBox">Additional Information</label>
+                <textarea id="messageBox" name="message"
+                          rows="4" placeholder="Optional message"></textarea>
+
+                <button type="submit" class="btn">Submit Registration</button>
+                <p id="message" role="status"></p>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <h3>IGNITE FEST 2026</h3>
+        <p>Learn • Compete • Celebrate</p>
+        <p>Contact: fest@example.com</p>
+        <p>&copy; 2026 College Festival. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const form = document.getElementById("registrationForm");
+        const message = document.getElementById("message");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const studentName = document.getElementById("name").value;
+            const selectedEvent = document.getElementById("event").value;
+
+            message.textContent =
+                "Thank you, " + studentName +
+                "! Your form has been checked for " +
+                selectedEvent + ". Connect a backend to save your registration.";
+
+            form.reset();
+        });
+    </script>
+
+</body>
+</html>
